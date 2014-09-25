@@ -41,7 +41,7 @@ class ArbejdsdageTests < Test::Unit::TestCase
     assert_equal Date.civil(2008, 5, 2), Date.civil(2008, 5, 5).arbejdsdag(-1)
   end
 
-  def test_should_return_next_working_day_on_a_holiday
+  def test_should_return_previous_working_day_on_a_holiday
     assert_equal Date.civil(2008, 4, 30), Date.civil(2008, 5, 2).arbejdsdag(-1)
   end
 
