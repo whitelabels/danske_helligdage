@@ -28,6 +28,11 @@ module DanskeHelligdage
       !weekend? && !helligdag?
     end
 
+  # Returns true if it is a bank day
+    def bankdag?
+      !weekend? && !helligdag? && !fredag_efter_krh? && !grundlovsdag? && !juleaftensdag? && !nytaarsaftensdag?
+    end
+
     # Returns true if it is a weekend
     def weekend?
       wday == 0 || wday == 6
@@ -83,6 +88,23 @@ module DanskeHelligdage
       month = (h + l - 7 * m + 114) / 31
       day = ((h + l - 7 * m + 114) % 31) + 1
       Date.civil(year, month, day)
+    end
+
+    def fredag_efter_krh?
+      fekrh = easter + 40
+      (month == fekrh.month && day == fekrh.day)
+    end
+
+    def grundlovsdag?
+      (month == 6 && day == 5)
+    end
+
+    def juleaftensdag?
+      (month == 12 && day == 24)
+    end
+
+    def nytaarsaftensdag?
+      (month == 12 && day == 31)
     end
   end
 end

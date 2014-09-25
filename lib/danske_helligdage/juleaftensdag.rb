@@ -11,7 +11,7 @@ module DanskeHelligdage
     end
 
     def helligdag_with_juleaften
-      (month == 12 && day == 24) ? 'Juleaftensdag' : helligdag_without_juleaften
+      juleaftensdag? ? 'Juleaftensdag' : helligdag_without_juleaften
     end
 
   end

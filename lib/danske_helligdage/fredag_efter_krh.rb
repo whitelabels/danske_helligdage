@@ -11,8 +11,7 @@ module DanskeHelligdage
     end
 
     def helligdag_with_fredag_efter_krh
-      fekrh = easter + 40
-      (month == fekrh.month && day == fekrh.day) ? "Fredag e. Kristi himmelfartsdag" : helligdag_without_fredag_efter_krh
+      fredag_efter_krh? ? "Fredag e. Kristi himmelfartsdag" : helligdag_without_fredag_efter_krh
     end
 
   end

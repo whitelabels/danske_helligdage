@@ -64,4 +64,25 @@ class DanskeHelligdageTests < Test::Unit::TestCase
     assert_equal 253, Date.arbejdsdage(Date.civil(2008, 1, 1), Date.civil(2008, 12, 31))
   end
 
+  def test_should_return_whether_it_is_a_bank_day_or_not
+    assert !Date.civil(2008, 5, 2).bankdag? #Friday after Ascension
+    assert Date.civil(2008, 5, 2).arbejdsdag? #Friday after Ascension
+
+    # Grundlovsdag
+    assert !Date.civil(2008, 6, 5).bankdag?
+
+    # Juleaftensdag
+    assert !Date.civil(2008, 12, 24).bankdag?, 'Juleaftensdag'
+
+    # Nytåsraftensdag
+    assert !Date.civil(2008, 12, 31).bankdag?, 'Nytårsaften'
+
+    # Same as workdays
+    assert  Date.civil(2008, 10, 24).bankdag?
+    assert !Date.civil(2008, 10, 25).bankdag?
+    assert !Date.civil(2008, 10, 26).bankdag?
+    assert  Date.civil(2008, 10, 27).bankdag?
+    assert !Date.civil(2008, 12, 26).bankdag?
+    assert !Date.civil(2008, 12, 27).bankdag?
+  end
 end

@@ -11,7 +11,7 @@ module DanskeHelligdage
     end
 
     def helligdag_with_grundlovsdag
-      (month == 6 && day == 5) ? 'Grundlovsdag' : helligdag_without_grundlovsdag
+      grundlovsdag? ? 'Grundlovsdag' : helligdag_without_grundlovsdag
     end
 
   end
