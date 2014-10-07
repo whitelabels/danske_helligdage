@@ -49,4 +49,12 @@ class ArbejdsdageTests < Test::Unit::TestCase
     assert_equal Date.civil(2008, 4, 30), Date.civil(2008, 5, 6).arbejdsdag(-3)
   end
 
+  def test_should_return_the_day_it_self_if_it_is_work_day
+    assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 5).arbejdsdag(0)
+  end
+
+  def test_should_return_the_next_bank_day_if_it_is_not_a_work_day
+    assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 4).arbejdsdag(0)
+  end
+
 end

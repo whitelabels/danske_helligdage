@@ -48,6 +48,15 @@ class BankdageTests < Test::Unit::TestCase
   def test_should_return_previous_3_banking_day_before_holiday_and_weekend
     assert_equal Date.civil(2008, 4, 29), Date.civil(2008, 5, 6).bankdag(-3)
   end
+
+  def test_should_return_the_day_it_self_if_it_is_bank_day
+    assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 5).bankdag(0)
+  end
+
+  def test_should_return_the_next_bank_day_if_it_is__not_a_bank_day
+    assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 4).bankdag(0)
+  end
+
   # April 29 Tuesday Bank day
   # April 30 Wednesday Bank day
   # May    1 Thursday Accension Holiday
