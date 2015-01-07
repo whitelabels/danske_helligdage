@@ -17,4 +17,4 @@ module DanskeHelligdage
   end
 end
 
-Date.send(:include, DanskeHelligdage::Nytaarsaftensdag)
+Date.send(:include, DanskeHelligdage::Nytaarsdag)
