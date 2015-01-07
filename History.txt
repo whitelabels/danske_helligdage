@@ -1,3 +1,7 @@
+== 1.0.3 / 2015-01-07
+
+* Support for more non-official public holidays (nytaarsdag, nytaarsaftensdag)
+
 === 1.0.2 / 2012-03-14
 
 * Ruby 1.9 support and support for calculating next working day [lhoeg]

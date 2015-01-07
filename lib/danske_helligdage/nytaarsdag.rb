@@ -10,7 +10,7 @@ module DanskeHelligdage
       end
     end
 
-    def helligdag_with_nytaarsaften
+    def helligdag_with_nytaarsdag
       (month == 1 && day == 1) ? 'Nytårsdag' : helligdag_without_nytaarsdag
     end
 
