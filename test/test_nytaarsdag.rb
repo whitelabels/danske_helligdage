@@ -13,7 +13,7 @@ class NytaarsaftendagTests < Test::Unit::TestCase
   end
 
   def test_should_return_the_name_of_the_holiday
-    assert_equal 'Nytårsaftensdag', Date.civil(2014, 12, 31).helligdag
+    assert_equal 'Nytårsdag', Date.civil(2015, 1, 1).helligdag
   end
 
 end

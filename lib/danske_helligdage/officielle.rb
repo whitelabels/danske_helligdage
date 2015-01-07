@@ -60,6 +60,7 @@ module DanskeHelligdage
       }
 
       absolute_dates = {
+        Date.new(year, 12, 31) => "Nytårsaftensdag",
         Date.new(year, 1, 1)   => "Nytårsdag",
         Date.new(year, 12, 25) => "1. juledag",
         Date.new(year, 12, 26) => "2. juledag",
@@ -105,6 +106,10 @@ module DanskeHelligdage
 
     def nytaarsaftensdag?
       (month == 12 && day == 31)
+    end
+
+    def nytaarsdag?
+      (month == 1 && day == 1)
     end
   end
 end
