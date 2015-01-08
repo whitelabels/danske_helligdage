@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'danske_helligdage'
 
 module DanskeHelligdage
