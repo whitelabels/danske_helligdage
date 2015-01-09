@@ -28,16 +28,20 @@ module DanskeHelligdage
       !weekend? && !helligdag?
     end
 
-  # Returns true if it is a bank day
+    # Returns true if it is a bank day
     def bankdag?
       !weekend? && !helligdag? && !fredag_efter_krh? && !grundlovsdag? && !juleaftensdag? && !nytaarsaftensdag?
+    end
+
+    def endk_arbejdsdag?
+      !weekend? && !helligdag? && !fredag_efter_krh? && !grundlovsdag? && !juleaftensdag? && !tredjejuledag? && !nytaarsaftensdag?
     end
 
     # Returns true if it is a weekend
     def weekend?
       wday == 0 || wday == 6
     end
-  
+
     # Returns true if it is a public holiday
     def helligdag?
       not helligdag.nil?
@@ -60,7 +64,6 @@ module DanskeHelligdage
       }
 
       absolute_dates = {
-        Date.new(year, 12, 31) => "Nytårsaftensdag",
         Date.new(year, 1, 1)   => "Nytårsdag",
         Date.new(year, 12, 25) => "1. juledag",
         Date.new(year, 12, 26) => "2. juledag",
@@ -102,6 +105,10 @@ module DanskeHelligdage
 
     def juleaftensdag?
       (month == 12 && day == 24)
+    end
+
+    def tredjejuledag?
+      (month == 12 && day == 27)
     end
 
     def nytaarsaftensdag?

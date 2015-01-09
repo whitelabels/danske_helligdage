@@ -74,7 +74,8 @@ class DanskeHelligdageTests < Test::Unit::TestCase
     # Juleaftensdag
     assert !Date.civil(2008, 12, 24).bankdag?, 'Juleaftensdag'
 
-    # Nytåsraftensdag
+
+    # Nytårsraftensdag
     assert !Date.civil(2008, 12, 31).bankdag?, 'Nytårsaften'
 
     # Same as workdays
@@ -84,5 +85,32 @@ class DanskeHelligdageTests < Test::Unit::TestCase
     assert  Date.civil(2008, 10, 27).bankdag?
     assert !Date.civil(2008, 12, 26).bankdag?
     assert !Date.civil(2008, 12, 27).bankdag?
+  end
+
+  def test_should_return_whether_it_is_an_endk_work_day_or_not
+    assert !Date.civil(2008, 5, 2).endk_arbejdsdag? #Friday after Ascension
+    assert Date.civil(2008, 5, 2).arbejdsdag? #Friday after Ascension
+
+    # Grundlovsdag
+    assert !Date.civil(2008, 6, 5).endk_arbejdsdag?
+
+    # Juleaftensdag
+    assert !Date.civil(2008, 12, 24).endk_arbejdsdag?, 'Juleaftensdag'
+
+    #Tredjejuledag
+    assert !Date.civil(2013, 12, 27).endk_arbejdsdag?, 'Tredjejuledag'
+    assert Date.civil(2013, 12, 27).arbejdsdag? # Third Christmas Day
+
+    # Nytårsraftensdag
+    assert !Date.civil(2008, 12, 31).endk_arbejdsdag?, 'Nytårsaften'
+    assert Date.civil(2008, 12, 31).arbejdsdag? # New Year's Eve
+
+    # Same as workdays
+    assert Date.civil(2008, 10, 24).endk_arbejdsdag?
+    assert !Date.civil(2008, 10, 25).endk_arbejdsdag?
+    assert !Date.civil(2008, 10, 26).endk_arbejdsdag?
+    assert Date.civil(2008, 10, 27).endk_arbejdsdag?
+    assert !Date.civil(2008, 12, 26).endk_arbejdsdag?
+    assert !Date.civil(2008, 12, 27).endk_arbejdsdag?
   end
 end
