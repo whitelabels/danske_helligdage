@@ -21,6 +21,10 @@ module DanskeHelligdage
           arbejdsdage_i_periode(*args)
         end
       end
+
+      def bankdage_i_periode(from, to)
+        (from..to).to_a.select { |date| date.bankdag? }.length
+      end
     end
 
     # Returns true if it is a working day
