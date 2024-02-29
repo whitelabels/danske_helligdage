@@ -36,6 +36,20 @@ class DanskeHelligdageTests < Test::Unit::TestCase
     assert  Date.civil(2008, 12, 26).helligdag?
     assert !Date.civil(2008, 1, 2).helligdag?
   end
+
+  def test_st_bededag_should_not_be_helligdag_in_2024_and_beyond
+    assert !Date.civil(2024, 4, 26).helligdag?
+    assert !Date.civil(2025, 5, 16).helligdag?
+
+    10.times do |i|
+      assert !(Date.civil(2024 + i, 1, 1).easter + 26).helligdag?
+    end
+  end
+
+  def test_st_bededag_should_be_helligdag_in_2023_and_before
+    assert (Date.civil(2023, 1, 1).easter + 26).helligdag?
+    assert_equal 'Store Bededag', (Date.civil(2023, 1, 1).easter + 26).helligdag
+  end
   
   def test_should_return_whether_is_is_a_weekend_or_not
     assert !Date.civil(2008, 10, 24).weekend?

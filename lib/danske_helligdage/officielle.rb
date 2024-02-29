@@ -61,11 +61,13 @@ module DanskeHelligdage
         (paaskedag - 2)  => "Langfredag",
         (paaskedag)      => "Påskedag",
         (paaskedag + 1)  => "2. påskedag",	
-        (paaskedag + 26) => "Store Bededag",	
-        (paaskedag + 39) => "Kristi himmelfartsdag",	
-        (paaskedag + 49) => "Pinsedag",	
-        (paaskedag + 50) => "2. pinsedag",	
+        (paaskedag + 39) => "Kristi himmelfartsdag",
+        (paaskedag + 49) => "Pinsedag",
+        (paaskedag + 50) => "2. pinsedag",
       }
+      if year < 2024
+        relative_dates.merge!((paaskedag + 26) => "Store Bededag")
+      end
 
       absolute_dates = {
         Date.new(year, 1, 1)   => "Nytårsdag",

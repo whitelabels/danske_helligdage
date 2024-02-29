@@ -13,6 +13,10 @@ class EndkArbejdsdagTests < Test::Unit::TestCase
     assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 4).endk_arbejdsdag
   end
 
+  def test_should_return_next_endk_work_day_on_day_that_used_to_be_st_bededag
+    assert_equal Date.civil(2024, 4, 26), Date.civil(2024, 4, 25).endk_arbejdsdag
+  end
+
   def test_should_return_next_endk_work_day_on_a_saturday
     assert_equal Date.civil(2008, 5, 5), Date.civil(2008, 5, 3).endk_arbejdsdag
   end
