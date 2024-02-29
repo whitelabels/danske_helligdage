@@ -14,7 +14,7 @@ module DanskeHelligdage
       end
 
       def arbejdsdage(*args)
-        if args[0].is_a? Fixnum
+        if args[0].is_a? Numeric
           year, month = args
           arbejdsdage_i_periode(Date.civil(year, month), (Date.civil(year, month) >> 1) - 1)
         else
