@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'danske_helligdage'
 
-class NytaarsaftendagTests < Test::Unit::TestCase
+class NytaarsdagTests < Test::Unit::TestCase
 
   def setup
     require 'danske_helligdage/nytaarsaftensdag'
